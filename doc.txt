@@ -1,0 +1,77 @@
+package joel.demo;
+
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+public class methods {
+
+	public static RemoteWebDriver seleniumDriver;
+	static WebDriverWait waiting;
+
+
+
+
+	void openBrowser(String testData) {
+	try {
+
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("disable-infobars");
+		options.addArguments("-headless--");
+		seleniumDriver = new ChromeDriver(options);
+		seleniumDriver.get(testData);
+		seleniumDriver.manage().window().maximize();
+
+		} catch (Exception e) {
+		   }
+		}
+
+   @SuppressWarnings("deprecation")
+	void enterData(String xpath,String textToEnter) {
+		try {
+		waiting = new WebDriverWait(seleniumDriver, 120);
+		waiting.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
+		seleniumDriver.findElement(By.xpath(xpath)).sendKeys(textToEnter);
+		System.out.print("element found");
+		} catch (Exception e) {
+			System.out.print("element not found");
+		}
+		}
+   
+    @SuppressWarnings("deprecation")
+	void clickObject(String xpath) {
+    	try {
+	    waiting = new WebDriverWait(seleniumDriver, 120);
+		waiting.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+		seleniumDriver.findElement(By.xpath(xpath)).click();
+		} catch (Exception e) {
+			System.out.print("element not found");
+		}
+		}
+	@SuppressWarnings("deprecation")
+	void SelectDropdown(String xpath,String texttoSelect) {
+		try {
+	    waiting = new WebDriverWait(seleniumDriver, 120);
+		waiting.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+		Select selDropDown = new Select(seleniumDriver.findElement(By.xpath(xpath)));
+		} catch (Exception e) {
+					}
+		}
+	@SuppressWarnings("deprecation")
+	void getWebelementText(String xpath) {
+		try {
+		waiting = new WebDriverWait(seleniumDriver, 120);
+		waiting.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
+		String textfound =seleniumDriver.findElement(By.xpath(xpath)).getText();
+		System.out.print(textfound);
+		} catch (Exception e) {
+			System.out.print("element not found");
+		}
+		}
+}
+	

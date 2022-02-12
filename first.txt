@@ -1,0 +1,58 @@
+package joel.demo;
+
+
+import org.openqa.selenium.chrome.WebDriver;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+Run All
+
+public class firsttest2 extends methods {
+   
+	public static RemoteWebDriver SeliniumDriver;
+	  
+	@Test (priority=1)
+	Run | Debug
+	void google() throws InterruptedException{
+		openBrowser("https://demo.guru99.com/test/newtours/reservation.php");
+		enterData("//input[@name='userName']","jty123");
+		Thread.sleep(5000);
+		enterData("//input[@name='password']","123456");
+		Thread.sleep(5000);
+		getWebelementText("//h3[(text()='Login Successfully')]");
+		Thread.sleep(5000);
+		clickObject("//a[text()='Flights']");
+		Thread.sleep(5000);
+		clickObject("//input [@value='oneway']");
+		Thread.sleep(5000);
+		clickObject("//input [@value='oneway']");
+		Thread.sleep(5000);
+		SelectDropdown("//Select[@name='passCount']","2");
+		Thread.sleep(5000);
+		SelectDropdown("//Select[@name='fromPort']","London");
+		Thread.sleep(5000);
+		SelectDropdown("//Select[@name='fromMonth']']","July");
+		Thread.sleep(5000);
+		SelectDropdown("//Select[@name='fromDay']']","1");
+		Thread.sleep(5000);
+		SelectDropdown("//Select[@name='toPort']","Paris");
+		Thread.sleep(5000);
+		SelectDropdown("//Select[@name='toMonth']","August");
+		Thread.sleep(5000);
+		SelectDropdown("//Select[@name='toDay']","1");
+		Thread.sleep(5000);
+		clickObject("//input [@value='Business']");
+		Thread.sleep(5000);
+		SelectDropdown("//Select[@name='airline']","Unified Airlines");
+		Thread.sleep(5000);
+		clickObject("//input [@name='findFlights']");
+		Thread.sleep(5000);
+		getWebelementText("//br[text()='After flight finder - No Seats Avaialble']");
+		
+	}
+	    
+}
