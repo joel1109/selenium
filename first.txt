@@ -1,70 +1,63 @@
-package joel.demo;
+package com.demo.test;
 
-
-import org.openqa.selenium.chrome.WebDriver;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
-Run All
+import java.io.File;
 
-public class firsttest2 extends methods {
-   
-	public static RemoteWebDriver SeliniumDriver;
-	  
-	@Test 
-	void google() throws InterruptedException{
-		openBrowser("http://omayo.blogspot.com/");
-		Thread.sleep(5000)
-		SelectDropdown("//select[@id='multiselect1']","volvo");
-		Thread.sleep(5000);
-		SelectDropdown("//select[@id='drop1']","doc1");
-		Thread.sleep(5000);
-		clickObject("//a[@id='link1']");
-		Thread.sleep(5000);
-		 List<WebElement> links = driver.findElements(By.tagName("a"));
-      		System.out.println(“The number of links is “ + links.size());
-		
-		getWebelementText("//h3[(text()='Login Successfully')]");
-		Thread.sleep(5000);
-		enterData("//input[@name='userName']","jty123");
-		Thread.sleep(5000);
-		enterData("//input[@name='password']","123456");
-		Thread.sleep(5000);
-		getWebelementText("//h3[(text()='Login Successfully')]");
-		Thread.sleep(5000);
-		clickObject("//a[text()='Flights']");
-		Thread.sleep(5000);
-		clickObject("//input [@value='oneway']");
-		Thread.sleep(5000);
-		clickObject("//input [@value='oneway']");
-		Thread.sleep(5000);
-		SelectDropdown("//Select[@name='passCount']","2");
-		Thread.sleep(5000);
-		SelectDropdown("//Select[@name='fromPort']","London");
-		Thread.sleep(5000);
-		SelectDropdown("//Select[@name='fromMonth']']","July");
-		Thread.sleep(5000);
-		SelectDropdown("//Select[@name='fromDay']']","1");
-		Thread.sleep(5000);
-		SelectDropdown("//Select[@name='toPort']","Paris");
-		Thread.sleep(5000);
-		SelectDropdown("//Select[@name='toMonth']","August");
-		Thread.sleep(5000);
-		SelectDropdown("//Select[@name='toDay']","1");
-		Thread.sleep(5000);
-		clickObject("//input [@value='Business']");
-		Thread.sleep(5000);
-		SelectDropdown("//Select[@name='airline']","Unified Airlines");
-		Thread.sleep(5000);
-		clickObject("//input [@name='findFlights']");
-		Thread.sleep(5000);
-		getWebelementText("//br[text()='After flight finder - No Seats Avaialble']");
-		
-	}
-	    
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import com.beust.jcommander.Strings;
+
+import junit.framework.Assert;
+
+public class driver {
+private static final String TakeScreenshot tk = null;
+
+@SuppressWarnings("deprecation")
+public static void main(Strings[] args) throws InterruptedException{
+	System.setProperty("webdriver.chrome.driver", "C:\\Selenium and drivers\\chromedriver_win32.exe");
+	WebDriver d = new ChromeDriver();
+	d.get("http://omayo.blogspot.com/");
+	SelectDropdown("//select[@id='multiselect1']","volvo");
+	Thread.sleep(5000);
+	SelectDropdown("//select[@id='drop1']","doc 1");
+	Thread.sleep(5000);
+	clickObject("//a[@id='link1']");
+	Thread.sleep(5000);
+	TakesScreenshot driver;
+	TakesScreenshot tk=(TakesScreenshot) driver;
+	File src =tk.getScreenshotAs(OutputType.FILE);
+	File dec = new File("C:\\Selenium and drivers\test.png");
+	int numberoflinks = ((RemoteWebDriver) driver).findElements(By.tagName("a")).size();
+	System.out.println("no of links" +numberoflinks); 
+	clickObject("/html/body/div[4]/div[2]/div[2]/div[2]/div[2]/div[2]/div[2]/div/div[4]/div[2]/div/aside/div/div[8]/div[1]/a");
+	Thread.sleep(5000);
+	
+	WebElement button = d.findElement(By.id("//button[@id='but2']"));
+
+	Assert.AreEqual(false, button.Enabled);
+	Assert.AreEqual(true, button.Enabled);
+	
+	
+}
+
+private static void print(String string) {
+	// TODO Auto-generated method stub
+	
+}
+
+private static void clickObject(String string) {
+	// TODO Auto-generated method stub
+	
+}
+
+private static void SelectDropdown(String string, String string2) {
+	// TODO Auto-generated method stub
+	
+}
 }
