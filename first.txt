@@ -2,6 +2,7 @@ package joel.demo;
 
 
 import org.openqa.selenium.chrome.WebDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -15,10 +16,20 @@ public class firsttest2 extends methods {
    
 	public static RemoteWebDriver SeliniumDriver;
 	  
-	@Test (priority=1)
-	Run | Debug
+	@Test 
 	void google() throws InterruptedException{
-		openBrowser("https://demo.guru99.com/test/newtours/reservation.php");
+		openBrowser("http://omayo.blogspot.com/");
+		SelectDropdown("//select[@id='multiselect1']","volvo");
+		Thread.sleep(5000);
+		SelectDropdown("//select[@id='drop1']","doc1");
+		Thread.sleep(5000);
+		clickObject("//a[@id='link1']");
+		Thread.sleep(5000);
+		 List<WebElement> links = driver.findElements(By.tagName("a"));
+      		System.out.println(“The number of links is “ + links.size());
+		
+		getWebelementText("//h3[(text()='Login Successfully')]");
+		Thread.sleep(5000);
 		enterData("//input[@name='userName']","jty123");
 		Thread.sleep(5000);
 		enterData("//input[@name='password']","123456");
