@@ -19,6 +19,7 @@ public class firsttest2 extends methods {
 	@Test 
 	void google() throws InterruptedException{
 		openBrowser("http://omayo.blogspot.com/");
+		Thread.sleep(5000)
 		SelectDropdown("//select[@id='multiselect1']","volvo");
 		Thread.sleep(5000);
 		SelectDropdown("//select[@id='drop1']","doc1");
